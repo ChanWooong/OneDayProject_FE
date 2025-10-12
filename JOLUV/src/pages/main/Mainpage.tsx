@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import TotalCredits from '../../components/displayCredits/totalCredits';
+import  EachCredits from '../../components/displayCredits/eachCredits';
 
 // 아이콘을 위한 간단한 placeholder 컴포넌트
 const IconPlaceholder: React.FC<{ className?: string }> = ({ className }) => (
@@ -11,7 +13,7 @@ const MainPage: React.FC = () => {
 
   // 페이지 이동을 처리하는 함수들 (필요에 따라 경로 수정)
   const handleLoginClick = () => {
-    // navigate('/login'); // 로그인 페이지 경로
+    navigate('/login'); 
     console.log("Login button clicked");
   };
 
@@ -50,7 +52,7 @@ const MainPage: React.FC = () => {
         {/* Title Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">KNU 졸업요건</h1>
-          <p className="text-lg text-gray-600">"컴퓨터학부 당신을 위한 페이지 입니다."</p>
+          <p className="text-lg text-gray-600">"컴퓨터학부 당신의 졸업을 위한 페이지 입니다."</p>
         </div>
 
         {/* Icon Button Grid Section */}
@@ -98,6 +100,19 @@ const MainPage: React.FC = () => {
             <li className="p-2">항목 3</li>
           </ul>
         </div>
+        {/*이부분이 각각의 학점 관련 컴포넌트를 가로 배치해둔 것 */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex space-x-8 items-stretch"> 
+            {/* 1. 왼쪽 컴포넌트: 전체 학점 현황 */}
+            <div className="flex-1">
+              <TotalCredits data={{totalCredits: 120, completedCredits:90}}/>
+            </div>
+            {/* 2. 오른쪽 컴포넌트: 전공/교양 학점 현황 */}
+            <div className="flex-1">
+                <EachCredits data={{MajorCredits:50, CultureCredits:30}}/>
+            </div>
+        </div>
+      </div>
       </main>
     </div>
   );
