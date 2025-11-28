@@ -1,120 +1,148 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import TotalCredits from '../../components/displayCredits/totalCredits';
-import  EachCredits from '../../components/displayCredits/eachCredits';
+import EachCredits from '../../components/displayCredits/eachCredits';
 
-// 아이콘을 위한 간단한 placeholder 컴포넌트
-const IconPlaceholder: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`bg-gray-300 rounded-full w-12 h-12 mb-4 mx-auto ${className}`}></div>
-);
+// 이미지 import
+import sugangLogo from '../../assets/sugang_logo.jpg';
+import checkLogo from '../../assets/check_logo.jpg';
+import hakjomLogo from '../../assets/hakjom_logo.jpg';
+import mypageLogo from '../../assets/mypage_logo.jpg';
+import titleLogo from '../../assets/knu_joluv_logo.jpg'; 
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
-
-  // 페이지 이동을 처리하는 함수들 (필요에 따라 경로 수정)
-  const handleLoginClick = () => {
-    navigate('/login'); 
-    console.log("Login button clicked");
-  };
 
   const handleCardClick = (path: string) => {
     navigate(path);
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen font-sans">
-      {/* 1. Header Section */}
-      <header className="bg-white shadow-md p-4 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-blue-600">KNU</div>
-
-        {/* Search Bar */}
-        <div className="relative flex-1 max-w-lg mx-4">
-          <input
-            type="text"
-            placeholder="search..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <span className="absolute top-1/2 right-4 -translate-y-1/2 text-gray-400">Q</span>
-        </div>
-
-        {/* Login Button */}
-        <button
-          onClick={handleLoginClick}
-          className="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition"
-        >
-          Login
-        </button>
-      </header>
-
-      {/* 2. Main Content Section */}
-      <main className="p-8">
+    <>
+      <div className="p-8">
         {/* Title Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">KNU 졸업요건</h1>
-          <p className="text-lg text-gray-600">"컴퓨터학부 당신의 졸업을 위한 페이지 입니다."</p>
+          <img 
+            src={titleLogo} 
+            alt="KNU JOLUV" 
+            className="h-16 mx-auto mb-4 object-contain" 
+          />
+          <p className="text-xl text-gray-700 font-['Gowun_Batang'] font-bold">
+            "성공적인 졸업을 위한 길라잡이입니다."
+          </p>
+          <p className="text-md text-gray-500 mt-2 font-['Gowun_Batang']">
+            "Your Roadmap to a Successful Graduation."
+          </p>
         </div>
 
         {/* Icon Button Grid Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center mb-12">
-          {/* Card 1: AI */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center mb-12 max-w-7xl mx-auto">
+          
+          {/* 1. 수강과목정리 카드 */}
           <div
-            onClick={() => console.log("AI card clicked")}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            onClick={() => handleCardClick('/score-management')}
+            className="
+              bg-white p-4 
+              rounded-full aspect-square 
+              flex flex-col justify-center items-center 
+              w-60 mx-auto 
+              shadow-xl hover:shadow-2xl 
+              border-4 border-gray-100 hover:border-pink-200 
+              transition-all duration-300 cursor-pointer 
+              hover:-translate-y-1
+            "
           >
-            <IconPlaceholder />
+            <img 
+              src={sugangLogo} 
+              alt="수강과목정리" 
+              className="h-24 w-auto mb-2 object-contain" 
+            />
             <h2 className="text-xl font-semibold text-gray-700">수강과목정리</h2>
           </div>
-          {/* Card 2: Checklist Page */}
+
+          {/* 2. 졸업요건 checklist 카드 */}
           <div
             onClick={() => handleCardClick('/checklist')}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="
+              bg-white p-4 
+              rounded-full aspect-square 
+              flex flex-col justify-center items-center 
+              w-60 mx-auto 
+              shadow-xl hover:shadow-2xl 
+              border-4 border-gray-100 hover:border-pink-200 
+              transition-all duration-300 cursor-pointer 
+              hover:-translate-y-1
+            "
           >
-            <IconPlaceholder />
-            <h2 className="text-xl font-semibold text-gray-700">졸업요건 checklist</h2>
+            <img 
+              src={checkLogo} 
+              alt="졸업요건 checklist" 
+              className="h-24 w-auto mb-2 object-contain" 
+            />
+            <h2 className="text-xl font-semibold text-gray-700">졸업요건 check</h2>
           </div>
-          {/* Card 3: Summary Page */}
+
+          {/* 3. 학점기록 카드 */}
           <div
             onClick={() => handleCardClick('/summary')}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="
+              bg-white p-4 
+              rounded-full aspect-square 
+              flex flex-col justify-center items-center 
+              w-60 mx-auto 
+              shadow-xl hover:shadow-2xl 
+              border-4 border-gray-100 hover:border-pink-200 
+              transition-all duration-300 cursor-pointer 
+              hover:-translate-y-1
+            "
           >
-            <IconPlaceholder />
-            <h2 className="text-xl font-semibold text-gray-700">학점 기록</h2>
+            <img 
+              src={hakjomLogo} 
+              alt="학점기록" 
+              className="h-24 w-auto mb-2 object-contain" 
+            />
+            <h2 className="text-xl font-semibold text-gray-700">학점기록</h2>
           </div>
-          {/* Card 4: AI Plan */}
+
+          {/* 4. 마이페이지 카드 */}
           <div
-            onClick={() => console.log("AI Plan card clicked")}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            onClick={() => handleCardClick('/mypage')}
+            className="
+              bg-white p-4 
+              rounded-full aspect-square 
+              flex flex-col justify-center items-center 
+              w-60 mx-auto 
+              shadow-xl hover:shadow-2xl 
+              border-4 border-gray-100 hover:border-pink-200 
+              transition-all duration-300 cursor-pointer 
+              hover:-translate-y-1
+            "
           >
-            <IconPlaceholder />
-            <h2 className="text-xl font-semibold text-gray-700">AI 추천 계획표</h2>
+            <img 
+              src={mypageLogo} 
+              alt="마이페이지" 
+              className="h-24 w-auto mb-2 object-contain" 
+            />
+            <h2 className="text-xl font-semibold text-gray-700">마이페이지</h2>
           </div>
+
         </div>
 
-        {/* List Section */}
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold mb-4">List</h3>
-          <ul className="space-y-2">
-            <li className="p-2 border-b">항목 1</li>
-            <li className="p-2 border-b">항목 2</li>
-            <li className="p-2">항목 3</li>
-          </ul>
+        {/* 학점 현황 섹션 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 max-w-7xl mx-auto">
+          <div className="md:col-span-2 lg:col-span-2">
+            <TotalCredits total={120} completed={90} percentage={75.0} />
+          </div>
+          <div className="md:col-span-1 lg:col-span-1">
+            <EachCredits title="전공 학점" score={50} />
+          </div>
+          <div className="md:col-span-1 lg:col-span-1">
+            <EachCredits title="교양 학점" score={30} />
+          </div>
         </div>
-        {/*이부분이 각각의 학점 관련 컴포넌트를 가로 배치해둔 것 */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex space-x-8 items-stretch"> 
-            {/* 1. 왼쪽 컴포넌트: 전체 학점 현황 */}
-            <div className="flex-1">
-              <TotalCredits data={{totalCredits: 120, completedCredits:90}}/>
-            </div>
-            {/* 2. 오른쪽 컴포넌트: 전공/교양 학점 현황 */}
-            <div className="flex-1">
-                <EachCredits data={{MajorCredits:50, CultureCredits:30}}/>
-            </div>
-        </div>
+        
       </div>
-      </main>
-    </div>
+    </>
   );
 };
 

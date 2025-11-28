@@ -1,6 +1,5 @@
 /* 페이지속의 페이지 ( 과목별 성적과 재이수 필요성 ) */
 
-/* App.css */
 .container {
   padding: 20px;
   max-width: 1200px;
@@ -32,6 +31,30 @@
 
 .cards-container {
   display: flex;
-  gap: 16px;
+  gap: 64px;
   flex-wrap: wrap;
+}
+.metrics-panel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.metric-box {
+  background: #fc0367;
+  border-radius: 12px;
+  padding: 18px 24px;
+  font-size: 18px;
+  text-align: center;
+  min-width: 180px;
+  box-shadow: 0 2px 8px #eed;
+  margin-right: 10px;
+}
+
+.header-controls {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
